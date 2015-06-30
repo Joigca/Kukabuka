@@ -18,5 +18,6 @@ el resto de los usuarios.</p>
 
 <p>** <strong>Mejoras implementándose</strong> **</p>
 
+________________________________________________________________________________________________________________________________
 
 <p>** Future Reparation: Database inoperative now, connection not possible **</p>
