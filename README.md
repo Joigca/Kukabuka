@@ -17,3 +17,5 @@ el resto de los usuarios.</p>
 <p>Posiblidad de ingresar videos e imágenes, y una implementacion de Favoritos, Sugerencias y Puntuacion</p>
 
 ** <strong>Mejoras implementándose</strong> **
+
+--------------------------------------------------------------------------------------------------------------------------------
