@@ -1,7 +1,7 @@
 # Kukabuka
 
-** Futura Reparacion: Base de datos inoperativa actualmente, conexion a esta no posible. **
-** Base de datos disponible para PruebaLocal  **
+<p>** Futura Reparacion: Base de datos inoperativa actualmente, conexion a esta no posible. **</p>
+<p>** Base de datos disponible para PruebaLocal  **</p>
 
 <p>Proyecto de Final de 1er Curso del Ciclo Superior en DAM en el Centro de Estudios Florida(Catarroja)</p>
 <p>Participantes del Proyecto:</p>
@@ -16,6 +16,7 @@
 el resto de los usuarios.</p>
 <p>Posiblidad de ingresar videos e imágenes, y una implementacion de Favoritos, Sugerencias y Puntuacion</p>
 
-** <strong>Mejoras implementándose</strong> **
+<p>** <strong>Mejoras implementándose</strong> **</p>
 
---------------------------------------------------------------------------------------------------------------------------------
+
+<p>** Future Reparation: Database inoperative now, connection not possible **</p>
