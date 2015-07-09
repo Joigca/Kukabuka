@@ -1,0 +1,99 @@
+CREATE DATABASE kukabuka CHARACTER SET utf8;
+
+use kukabuka;
+
+CREATE TABLE Puntuaciones(
+idReceta int not null,
+idUsuario int not null,
+puntos double not null,
+PRIMARY KEY(IdReceta, idUsuario));
+
+CREATE TABLE Usuarios(
+idUsuario int not null auto_increment,
+nomUsuario varchar(10) not null,
+pass varchar(45) not null,
+correo varchar(45) not null,
+PRIMARY  KEY (idUsuario));
+
+CREATE TABLE Favoritos(
+idFavorito int not null auto_increment,
+idReceta int not null,
+nomReceta varchar(45) not null,
+PRIMARY  KEY (idFavorito));
+
+CREATE TABLE Ingredientes(
+idIngrediente int not null auto_increment,
+nombre VARCHAR(45) not null,
+tipo VARCHAR(45) not null,
+PRIMARY KEY(idIngrediente));
+
+CREATE TABLE Categorias(
+idCategoria int not null auto_increment,
+nombre VARCHAR(45) not null,
+PRIMARY KEY(idCategoria));
+
+CREATE TABLE Recetas(
+idReceta int not null auto_increment,
+nombre varchar(45) not null,
+descripcion varchar(40) not null,
+tipoIngPrincipal varchar(10) not null,
+tipo varchar(10) not null,
+preparacion varchar(5000) not null,
+video varchar(100) null,
+idUsuario int not null,
+consejo varchar(140) null,
+dificultad varchar(10) not null,
+puntuacion int(2) not null,
+pais varchar(20) not null,
+idCategoria int not null,
+tPrep int not null,
+PRIMARY KEY (idReceta),
+CONSTRAINT fk_UsuarioReceta FOREIGN KEY (idUsuario) REFERENCES Usuarios (idUsuario),
+CONSTRAINT fk_Categoria FOREIGN KEY (idCategoria) REFERENCES Categorias (idCategoria));
+
+CREATE TABLE Ingrediente_Receta(
+idReceta int not null,
+idIngrediente int not null,
+PRIMARY KEY(idIngrediente, idReceta),
+CONSTRAINT fk_RecetaIng FOREIGN KEY (idReceta) REFERENCES Recetas (idReceta),
+CONSTRAINT fk_Ingrediente FOREIGN KEY (idIngrediente) REFERENCES Ingredientes (idIngrediente));
+
+CREATE TABLE Imagenes(
+idImagen int not null auto_increment,
+imagenes blob not null,
+nombre varchar(45) not null,
+idReceta int not null,
+CONSTRAINT fk_ImagenRceta FOREIGN KEY (idReceta) REFERENCES Recetas (idReceta),
+PRIMARY KEY (idImagen));
+
+CREATE TABLE Favorito_Usuario(
+idFavorito int not null,
+idUsuario int not null,
+PRIMARY KEY (idFavorito, idUsuario),
+CONSTRAINT fk_UsuarioFavorito FOREIGN KEY (idUsuario) REFERENCES Usuarios (idUsuario),
+CONSTRAINT fk_Favorito FOREIGN KEY (idFavorito) REFERENCES Favoritos (idFavorito));
+
+-- INSERTS
+insert into usuarios (idUsuario,NomUsuario,Pass,Correo) values (-1,"kukabuka","admin","kukabukaapp@gmail.com");
+
+insert into categorias (Nombre) values ("Primer plato");
+insert into categorias (Nombre) values ("Segundo plato");
+insert into categorias (Nombre) values ("Entrantes");
+insert into categorias (Nombre) values ("Postre");
+
+insert into ingredientes (idIngrediente,Nombre,Tipo) values (1,"Atun","Pescado");
+insert into ingredientes (idIngrediente,Nombre,Tipo) values (2,"Tomate","Verdura");
+insert into ingredientes (idIngrediente,Nombre,Tipo) values (3,"Lechuga","Verdura");
+insert into ingredientes (idIngrediente,Nombre,Tipo) values (4,"Aceite","");
+insert into ingredientes (idIngrediente,Nombre,Tipo) values (5,"Pan","");
+insert into ingredientes (idIngrediente,Nombre,Tipo) values (6,"Hamburguesa","Carne");
+insert into ingredientes (idIngrediente,Nombre,Tipo) values (7,"Pollo","Carne");
+insert into ingredientes (idIngrediente,Nombre,Tipo) values (8,"Huevo","");
+insert into ingredientes (idIngrediente,Nombre,Tipo) values (9,"Manzana","Fruta");
+insert into ingredientes (idIngrediente,Nombre,Tipo) values (10,"Patata","Tuberculo");
+
+create user 'user'@'localhost' identified by 'user';
+grant delete on kukabuka. * to 'user'@'localhost';
+grant select on kukabuka. * to 'user'@'localhost';
+grant insert on kukabuka. * to 'user'@'localhost';
+grant update on kukabuka. * to 'user'@'localhost';
